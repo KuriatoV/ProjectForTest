@@ -1,0 +1,11 @@
+.event-item{
+  width: 90%;
+  /*height:100px;*/
+  background:#FFF4E9;
+  border:5px solid white;
+  margin:0 auto;
+}
+.centered {
+  margin:0 auto;
+  text-align: center;
+}
