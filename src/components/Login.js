@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as scheduleActions from '../actions/scheduleActions';
 import data from '../../data/data.json'
-import './schedule.css';
+import * as eventsActions from '../actions/eventsActions';
 // import { Field, reduxForm } from 'redux-form'
 // import ContactForm from './ContactForm'
 import Contact from './Contact'
@@ -34,7 +33,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(scheduleActions, dispatch)
+    actions: bindActionCreators(eventsActions, dispatch)
   };
 }
 

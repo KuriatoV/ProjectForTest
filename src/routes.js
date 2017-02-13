@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import App from './containers/App';
-import Schedule from './components/Schedule';
 import Login from './components/Login';
 import Events from './components/Events';
 
