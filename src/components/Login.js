@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import data from '../../data/data.json'
+import {Link,browserHistory} from 'react-router';
 import * as eventsActions from '../actions/eventsActions';
 // import { Field, reduxForm } from 'redux-form'
 // import ContactForm from './ContactForm'
-import Contact from './Contact'
+import LoginForm from './LoginForm'
 
 
 class Login extends Component {
@@ -20,8 +20,8 @@ class Login extends Component {
       <div >
         <h1 >LOGIN PAGE</h1>
 
-        <Contact onSubmit={() => {}}/>
-
+        <LoginForm onSubmit={() => {}}/>
+        <Link to='/events'>MAKE ME WORK PLS</Link>
       </div>
     )
   }

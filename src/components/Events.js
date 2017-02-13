@@ -7,7 +7,7 @@ import data from '../../data/data.json'
 import './events.css';
 // import { Field, reduxForm } from 'redux-form'
 // import ContactForm from './ContactForm'
-import Contact from './Contact'
+
 
 
 class Events extends Component {
