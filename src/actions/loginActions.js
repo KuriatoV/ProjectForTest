@@ -1,20 +1,26 @@
 import * as types from '../constants/ActionTypes';
 import axios from 'axios';
-// export function loadEventsSuccess(events) {
-//   return { type: types.LOAD_EVENTS_SUCCESS, events };
-// }
-// export function loadEventsFailure(data) {
-//   return { type: types.LOAD_EVENTS_FAILURE, data };
-// }
-export function login(loginData) {
-  const URL= `http://api.itboost.org:82/app_dev.php/api/login_check`;
-  return function(dispatch) {
-    return axios
-        .post(URL,{...loginData})
-        .then(res => {
-          dispatch(loginSuccess(res.data));
-        }).catch(error => {
-            console.log(error);
-        });
-  };
+
+export function loginSuccess(data) {
+  return { type: types.LOGIN_SUCCESS, data };
+}
+export function loginFailure(error) {
+  return { type: types.LOGIN_FAILURE, error };
+}
+
+export function login(values){
+  const URL = `http://api.itboost.org:82/app_dev.php/api/login_check`;
+  let loginInfo = {
+    _username: values.username,
+    _password: values.password
+  }
+  return (dispatch)=>{
+    axios
+  .post(URL, loginInfo)
+  .then((res) => {
+    dispatch(loginSuccess(res.data));
+  }).catch(error => {
+    dispatch(loginFailure(error));
+  });
+}
 }

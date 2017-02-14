@@ -3,9 +3,9 @@ import { Field, FieldArray, reduxForm, SubmissionError} from 'redux-form'
 
 class LoginForm extends Component {
   render() {
-    const { error, handleSubmit, pristine, reset, submitting } = this.props
+    const { error, handleSubmit, pristine, reset, submitting,onSubmit } = this.props
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <Field name="username" type="email" component={'input'} label="Username"/>
         <div><Field name="password" type="password" component={'input'} label="Password"/> {error && <strong>{error}</strong>}</div>
         <div>
