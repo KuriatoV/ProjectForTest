@@ -1,5 +1,6 @@
 import * as types from '../constants/ActionTypes';
 import axios from 'axios';
+import { SubmissionError } from 'redux-form';
 
 export function loginSuccess(data) {
   return { type: types.LOGIN_SUCCESS, data };
@@ -20,6 +21,7 @@ export function login(values){
   .then((res) => {
     dispatch(loginSuccess(res.data));
   }).catch(error => {
+      throw new SubmissionError({ username: 'User does not exist', _error: 'Login failed!' })
     dispatch(loginFailure(error));
   });
 }
