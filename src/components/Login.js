@@ -18,7 +18,7 @@ class Login extends Component {
     next.loginSuccess && (browserHistory.push('/events'));
 
   }
-  componentDidUnmount(){
+  componentWillUnmount(){
     this.props.actions.resetToInitialstate;
   }
 
