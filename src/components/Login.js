@@ -6,7 +6,7 @@ import * as loginActions from '../actions/loginActions';
 import axios from 'axios';
 import LoginForm from './LoginForm'
 import { SubmissionError } from 'redux-form'
-
+import MDSpinner from "react-md-spinner";
 
 class Login extends Component {
   constructor(props, context) {
@@ -15,19 +15,43 @@ class Login extends Component {
 
   }
   componentWillReceiveProps(next){
-    next.loginSuccess && (browserHistory.push('/events'))
+    next.loginSuccess && (browserHistory.push('/events'));
+
+  }
+  componentDidUnmount(){
+    this.props.actions.resetToInitialstate;
   }
 
 
 submit= (values) =>{
   this.props.actions.login(values);
+
+}
+reset =()=>{
+  this.props.actions.reset();
 }
 
   render() {
+    const {loginFailure,loginRequest} =this.props
     return (
-      <div >
+      <div>
         <h1 >LOGIN PAGE</h1>
-        <LoginForm onSubmit={this.submit}/>
+
+
+        {loginRequest ?
+        <div style={{margin:'0 auto',textAlign:'center'}}>  <MDSpinner  size='70'/></div> :
+        <LoginForm
+            onSubmit={this.submit}
+          />
+        }
+
+        {loginFailure &&
+          <div>
+          <span>Учетной записи с такими даннными не найдено!</span>
+          <button onClick={this.reset}>Ок</button>
+        </div>
+      }
+
       </div>
     )
   }
@@ -36,6 +60,9 @@ submit= (values) =>{
 function mapStateToProps(state) {
   return {
     loginSuccess:state.login.loginSuccess,
+    loginFailure:state.login.loginFailure,
+    loginRequest:state.login.loginRequest,
+
   };
 }
 
