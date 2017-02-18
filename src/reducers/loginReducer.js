@@ -4,6 +4,22 @@ const initialState = {
 loginSuccess:false,
 loginFailure:false,
 loginRequest:false,
+accountInfo:{
+  firstname:'Valentyn',
+  secondname:'Kuriato',
+  phones:['0937447904','0937447905'],
+    address:{
+    city:{
+      id:1,
+      name:'Kyiv'
+    },
+  },
+  familliary:[
+    {name:"react",experience:'3 month'},
+    {name:"HTML",experience:'6 month'},
+    {name:"CSS",experience:'6 month'},
+  ]
+},
 }
 
 export default function loginReducer(state = initialState, action) {
@@ -21,6 +37,7 @@ export default function loginReducer(state = initialState, action) {
         ...state,
          loginSuccess:true,
          loginRequest:initialState.loginRequest,
+
        }
 
       case types.LOGIN_FAILURE:

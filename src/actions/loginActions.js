@@ -27,7 +27,7 @@ export function login(values) {
   return (dispatch) => {
     dispatch(loginRequest());
     axios.post(URL, loginInfo).then((res) => {
-      dispatch(loginSuccess(res.data));
+      dispatch(loginSuccess(res));
     }).catch(error => {
       dispatch(loginFailure(error));
 

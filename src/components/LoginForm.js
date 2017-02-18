@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 import {Field, FieldArray, reduxForm, SubmissionError} from 'redux-form'
 import isEmail from 'sane-email-validation'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
-// const submit = () => {
-//
-// }
 
 const validate = values => {
   const errors = {}
@@ -27,7 +26,7 @@ const renderInput = field =>
   {field.meta.touched && field.meta.error && <span className='text-danger'>{field.meta.error}</span>}
 </div>
 
-class LoginForm extends Component {
+ class LoginForm extends Component {
   render() {
     const {
       error,
@@ -50,7 +49,16 @@ class LoginForm extends Component {
   }
 
 }
-export default LoginForm = reduxForm({
+ LoginForm = reduxForm({
   form: 'loginForm', validate,
   // submit,
-})(LoginForm);
+})(LoginForm)
+
+LoginForm= connect(
+  state=>({
+  initialValues:{username:'kuriato.valentyn@gmail.com',
+  password:'1a2b3c4d'}}),
+  
+
+)(LoginForm)
+export default LoginForm
